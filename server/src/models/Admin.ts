@@ -30,7 +30,7 @@ const AdminSchema: Schema = new Schema({
 })
 
 // Hash password before saving
-AdminSchema.pre('save', async function(next) {
+AdminSchema.pre('save', async function(this: IAdmin, next) {
   if (!this.isModified('password')) return next()
   
   try {

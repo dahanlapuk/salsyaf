@@ -19,7 +19,7 @@ export default function Hero() {
                 <h1 className={styles.title}>
                     Pondok Pesantren Tahfidzul Quran
                     <br />
-                    <span className={styles.subtitle}>Proto</span>
+                    <span className={styles.subtitle}>Salafiyah Syafi'iyah Proto</span>
                 </h1>
                 <p className={styles.description}>
                     Membentuk Generasi Qur'ani yang Berakhlak Mulia

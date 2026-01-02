@@ -102,3 +102,62 @@
 .newsContent .btn {
     align-self: flex-start;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header {
+        padding: 3rem 0 2rem;
+    }
+
+    .header h1 {
+        font-size: 1.75rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    .newsImage {
+        height: 180px;
+    }
+
+    .newsContent {
+        padding: 1.25rem;
+    }
+
+    .newsContent h3 {
+        font-size: 1.1rem;
+    }
+
+    .newsMeta {
+        font-size: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .newsContent p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .newsImage {
+        height: 160px;
+    }
+
+    .category {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .newsContent {
+        padding: 1rem;
+    }
+
+    .newsContent h3 {
+        font-size: 1rem;
+    }
+}

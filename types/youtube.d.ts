@@ -5,6 +5,11 @@ declare namespace YT {
     pauseVideo(): void
     stopVideo(): void
     getPlayerState(): number
+    mute(): void
+    unMute(): void
+    isMuted(): boolean
+    setVolume(volume: number): void
+    getVolume(): number
   }
 
   interface PlayerOptions {

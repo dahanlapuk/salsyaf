@@ -313,6 +313,32 @@ a:hover {
   .section {
     padding: var(--spacing-xl) 0;
   }
+  
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  
+  .container,
+  .container-wide {
+    padding: 0 var(--spacing-xs);
+  }
+  
+  .card {
+    padding: var(--spacing-md);
+  }
 }
 
 /* Loading Spinner */

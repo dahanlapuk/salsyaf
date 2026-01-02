@@ -17,13 +17,13 @@ export default function Navbar() {
             <div className={styles.container}>
                 <Link href="/" className={styles.logo}>
                     <Image
-                        src="/profil.jpg"
+                        src="/images/placeholder.jpg"
                         alt="Logo PPTQ"
                         width={50}
                         height={50}
                         className={styles.logoImage}
                     />
-                    <span className={styles.logoText}>PPTQ Salafiyah Syafi'iyah</span>
+                    <span className={styles.logoText}>PPTQ Salsyaf Proto</span>
                 </Link>
 
                 <button

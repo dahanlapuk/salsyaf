@@ -1,9 +1,13 @@
+'use client'
+
 import Hero from '@/components/Hero'
+import YouTubePopup from '@/components/YouTubePopup'
 import styles from './page.module.css'
 
 export default function Home() {
     return (
         <div className={styles.home}>
+            <YouTubePopup videoId="-CAL3YpejUM" autoClose={2} />
             <Hero />
 
             {/* Welcome Section */}

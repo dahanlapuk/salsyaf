@@ -21,6 +21,108 @@
     color: rgba(255, 255, 255, 0.95);
 }
 
+/* Sejarah Section */
+.sejarahSection {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.pendiriGrid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.pendiriCard {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.pendiriPhoto {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--color-primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.pendiriImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pendiriCard h4 {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.pendiriName {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin: 0 0 0.5rem 0;
+}
+
+.pendiriRole {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.sejarahContent {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 2px solid var(--color-surface);
+}
+
+.sejarahText p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.sejarahText p:last-child {
+    margin-bottom: 0;
+}
+
+.sejarahHighlight {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.yearBadge {
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sejarahHighlight span {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-top: 0.5rem;
+}
+
 .aboutGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -127,6 +229,524 @@
 
     .aboutGrid,
     .locationCard {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Yayasan Section */
+.yayasanCard {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(5, 150, 105, 0.1);
+}
+
+.yayasanHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-surface);
+}
+
+.yayasanIcon {
+    font-size: 3rem;
+}
+
+.yayasanHeader h3 {
+    margin: 0;
+    color: var(--color-primary-dark);
+}
+
+.yayasanHeader p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+}
+
+.yayasanDesc {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+}
+
+.lembagaGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.lembagaItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+}
+
+.lembagaItem:hover {
+    background: rgba(5, 150, 105, 0.1);
+    transform: translateX(5px);
+}
+
+.lembagaItem div {
+    display: flex;
+    flex-direction: column;
+}
+
+.lembagaAlias {
+    color: var(--color-text-light);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+.lembagaTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin: 1.5rem 0 1rem;
+}
+
+.lembagaIcon {
+    font-size: 1.5rem;
+}
+
+/* Struktur Pesantren */
+.pengasuhSection {
+    margin-bottom: 3rem;
+}
+
+.pengasuhCard {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.pengasuhPhoto {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-lg);
+}
+
+.pengasuhImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pengasuhInfo {
+    flex: 1;
+}
+
+.pengasuhTitle {
+    display: block;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+}
+
+.pengasuhName {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 1rem 0;
+}
+
+.pengasuhDesc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+.kepalaPesantren {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    border-radius: var(--radius-lg);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.kepalaIcon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.kepalaPesantren h3 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.kepalaName {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.kepalaDesc {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+}
+
+.pesantrenHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-surface);
+}
+
+.pesantrenIcon {
+    font-size: 2rem;
+}
+
+.pesantrenHeader h3 {
+    margin: 0;
+}
+
+.gedungList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.gedungItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.gedungBadge {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    min-width: 60px;
+    text-align: center;
+}
+
+.gedungBadgeCabang {
+    background: var(--gradient-secondary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    min-width: 60px;
+    text-align: center;
+}
+
+.gedungInfo {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-surface);
+}
+
+/* Lurah Section */
+.lurahSection {
+    margin-top: 2rem;
+}
+
+.lurahCard {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(5, 150, 105, 0.1);
+}
+
+.lurahPhoto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3px solid var(--color-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.lurahImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lurahInfo {
+    flex: 1;
+}
+
+.lurahTitle {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+    margin-bottom: 0.25rem;
+}
+
+.lurahHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lurahHeader span {
+    font-size: 2.5rem;
+}
+
+.lurahHeader h4 {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lurahName {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin: 0.25rem 0 0 0;
+}
+
+.lurahDesc {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: 0.5rem 0 0 0;
+    line-height: 1.5;
+}
+
+/* Gedung Section */
+.gedungSection {
+    margin-bottom: 3rem;
+}
+
+.gedungSectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.5rem;
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+}
+
+.gedungSectionIcon {
+    font-size: 2.5rem;
+}
+
+.gedungSectionHeader h3 {
+    margin: 0;
+    color: var(--color-primary-dark);
+}
+
+.gedungSectionHeader p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+}
+
+.gedungGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.gedungCard {
+    background: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gedungCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.gedungPhoto {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    background: var(--color-surface);
+}
+
+.gedungImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gedungTypeBadge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.gedungTypeBadgeCabang {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: var(--gradient-secondary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.gedungCardContent {
+    padding: 1rem;
+}
+
+.gedungCardContent h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: var(--color-text);
+}
+
+.gedungPenanggungJawab {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+/* Gedung Detail List */
+.gedungDetailList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.gedungDetailItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-surface);
+    border-radius: var(--radius-sm);
+}
+
+.gedungDetailInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.gedungNama {
+    font-weight: 500;
+    color: var(--color-text);
+    font-size: 0.9rem;
+}
+
+.gedungPJ {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+.totalGedung {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+}
+
+.totalItem {
+    text-align: center;
+}
+
+.totalNumber {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.totalLabel {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+}
+
+@media (max-width: 768px) {
+    .totalGedung {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .lembagaGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .pendiriGrid {
+        gap: 1.5rem;
+    }
+
+    .sejarahContent {
+        grid-template-columns: 1fr;
+    }
+
+    .sejarahHighlight {
+        order: -1;
+    }
+
+    .pengasuhCard {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pengasuhName {
+        font-size: 1.5rem;
+    }
+
+    .lurahCard {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .gedungGrid {
         grid-template-columns: 1fr;
     }
 }

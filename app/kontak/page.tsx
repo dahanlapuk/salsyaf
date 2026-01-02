@@ -38,20 +38,19 @@ export default function KontakPage() {
                                 <div className="card">
                                     <div className={styles.infoIcon}>📧</div>
                                     <h4>Email</h4>
-                                    <p>ponpes_salsyaf@example.com</p>
+                                    <p>ponpesproto22@gmail.com</p>
                                 </div>
 
                                 <div className="card">
                                     <div className={styles.infoIcon}>📱</div>
-                                    <h4>Telepon</h4>
-                                    <p>+62 xxx xxxx xxxx</p>
+                                    <h4>WhatsApp</h4>
+                                    <p>Santri Putra: +62 857-0012-8153</p>
                                 </div>
 
                                 <div className="card">
                                     <div className={styles.infoIcon}>📷</div>
-                                    <h4>Instagram</h4>
-                                    <p>@ponpes_salsyaf</p>
-                                    <p className={styles.followers}>2,918 pengikut</p>
+                                    <h4>Instagram & TikTok</h4>
+                                    <p>@ponpes_salsysaf</p>
                                 </div>
                             </div>
                         </div>

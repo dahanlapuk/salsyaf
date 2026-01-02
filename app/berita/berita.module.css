@@ -42,10 +42,16 @@
     width: 100%;
     height: 200px;
     background: var(--color-surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
+}
+
+.newsImg {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.newsCard:hover .newsImg {
+    transform: scale(1.05);
 }
 
 .imagePlaceholder {

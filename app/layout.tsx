@@ -4,7 +4,11 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+    subsets: ['latin'],
+    display: 'swap',
+    fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+})
 
 export const metadata: Metadata = {
     title: 'Pondok Pesantren Tahfidzul Quran Salafiyah Syafi\'iyah',

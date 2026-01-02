@@ -84,6 +84,9 @@ export default function Footer() {
                 <div className={styles.bottom}>
                     <p>&copy; {new Date().getFullYear()} Pondok Pesantren Tahfidzul Quran Proto. All rights reserved.</p>
                 </div>
+                <div className={styles.watermark}>
+                    <a href="https://itbamuhammad01.web.app" target="_blank" rel="noopener noreferrer">Hexadev Technologies</a> • 2026 • v1.2.5
+                </div>
             </div>
         </footer>
     )

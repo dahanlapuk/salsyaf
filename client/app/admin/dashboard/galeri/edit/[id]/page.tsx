@@ -27,12 +27,14 @@ export default function EditGaleriPage() {
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/gallery/${id}`)
             if (res.ok) {
-                const data = await res.json()
+                const json = await res.json()
+                // Backend returns { success, data } - extract data.data
+                const item = json.data || json
                 setFormData({
-                    title: data.title || '',
-                    description: data.description || '',
-                    image: data.image || '',
-                    category: data.category || 'Kegiatan'
+                    title: item.title || '',
+                    description: item.description || '',
+                    image: item.image || '',
+                    category: item.category || 'Kegiatan'
                 })
             } else {
                 setError('Foto tidak ditemukan')

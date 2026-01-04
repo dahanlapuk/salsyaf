@@ -40,8 +40,14 @@ export default function BeritaDetailPage() {
         try {
             const res = await fetch(`${API_URL}/api/news/${id}`)
             if (res.ok) {
-                const data = await res.json()
-                setNews(data)
+                const json = await res.json()
+                // Backend returns { success, data } - extract data.data
+                const newsItem = json.data || json
+                if (newsItem && newsItem._id) {
+                    setNews(newsItem)
+                } else {
+                    setNotFound(true)
+                }
             } else {
                 setNotFound(true)
             }
@@ -58,9 +64,8 @@ export default function BeritaDetailPage() {
             const res = await fetch(`${API_URL}/api/news`)
             if (res.ok) {
                 const json = await res.json()
-                console.log('DEBUG DATA:', json)
-                console.log('DEBUG DATA.TYPE:', typeof json?.data, Array.isArray(json?.data))
-                const newsArray = Array.isArray(json.data) ? json.data : (Array.isArray(json) ? json : [])
+                // Backend returns { success, data, pagination }
+                const newsArray = Array.isArray(json.data) ? json.data : []
                 const related = newsArray
                     .filter((item: NewsItem) => item._id !== id && item.published)
                     .slice(0, 2)

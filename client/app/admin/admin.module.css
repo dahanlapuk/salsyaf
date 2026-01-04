@@ -590,6 +590,46 @@
     transition: var(--transition-base);
 }
 
+/* Upload Section */
+.uploadSection {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--sp-2);
+}
+
+.uploadBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-2) var(--sp-4);
+    background: var(--gradient-primary);
+    color: var(--white);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.uploadBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.imagePreview {
+    display: flex;
+    align-items: center;
+    margin-top: var(--sp-2);
+}
+
+.imagePreview img {
+    max-width: 200px;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--gray-200);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .sidebar {

@@ -1,6 +1,18 @@
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 
+// Get JWT Secret with validation
+const getJwtSecret = (): string => {
+    const secret = process.env.JWT_SECRET
+    if (!secret || secret === 'your-secret-key-change-this-in-production') {
+        if (process.env.NODE_ENV === 'production') {
+            throw new Error('JWT_SECRET must be set in production!')
+        }
+        return 'dev-secret-key-not-for-production'
+    }
+    return secret
+}
+
 export interface AuthRequest extends Request {
     user?: {
         id: string
@@ -18,7 +30,7 @@ export const authMiddleware = (req: AuthRequest, res: Response, next: NextFuncti
         }
 
         const token = authHeader.split(' ')[1]
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key') as {
+        const decoded = jwt.verify(token, getJwtSecret()) as {
             id: string
             username: string
             role: string

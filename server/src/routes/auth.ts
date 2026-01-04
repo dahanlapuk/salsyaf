@@ -4,6 +4,19 @@ import Admin from '../models/Admin'
 
 const router = Router()
 
+// Get JWT Secret with validation
+const getJwtSecret = (): string => {
+    const secret = process.env.JWT_SECRET
+    if (!secret || secret === 'your-secret-key-change-this-in-production') {
+        if (process.env.NODE_ENV === 'production') {
+            throw new Error('JWT_SECRET must be set in production!')
+        }
+        console.warn('⚠️  WARNING: Using default JWT secret. Set JWT_SECRET in production!')
+        return 'dev-secret-key-not-for-production'
+    }
+    return secret
+}
+
 // Login
 router.post('/login', async (req: Request, res: Response) => {
   try {
@@ -24,7 +37,7 @@ router.post('/login', async (req: Request, res: Response) => {
     // Generate JWT
     const token = jwt.sign(
       { id: admin._id, username: admin.username, role: admin.role },
-      process.env.JWT_SECRET || 'your-secret-key',
+      getJwtSecret(),
       { expiresIn: '7d' }
     )
 
@@ -42,10 +55,21 @@ router.post('/login', async (req: Request, res: Response) => {
   }
 })
 
-// Register (protected - only for initial setup or superadmin)
+// Register (PROTECTED - disabled in production unless ADMIN_REGISTER_KEY is set)
 router.post('/register', async (req: Request, res: Response) => {
   try {
-    const { username, password, role } = req.body
+    const { username, password, role, registerKey } = req.body
+
+    // Security: Block registration in production unless valid key provided
+    if (process.env.NODE_ENV === 'production') {
+        const adminRegisterKey = process.env.ADMIN_REGISTER_KEY
+        if (!adminRegisterKey || registerKey !== adminRegisterKey) {
+            return res.status(403).json({ 
+                success: false, 
+                message: 'Registration is disabled. Use seed script or contact administrator.' 
+            })
+        }
+    }
 
     // Check if admin already exists
     const existingAdmin = await Admin.findOne({ username })
@@ -79,7 +103,7 @@ router.get('/verify', async (req: Request, res: Response) => {
       return res.status(401).json({ success: false, message: 'No token provided' })
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key') as any
+    const decoded = jwt.verify(token, getJwtSecret()) as any
     const admin = await Admin.findById(decoded.id).select('-password')
 
     if (!admin) {

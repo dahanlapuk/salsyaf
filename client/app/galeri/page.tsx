@@ -28,6 +28,8 @@ export default function GaleriPage() {
             const res = await fetch(`${API_URL}/api/gallery`)
             if (res.ok) {
                 const json = await res.json()
+                console.log('DEBUG DATA:', json)
+                console.log('DEBUG DATA.TYPE:', typeof json?.data, Array.isArray(json?.data))
                 const galleryArray = Array.isArray(json.data) ? json.data : (Array.isArray(json) ? json : [])
                 setGallery(galleryArray)
             }

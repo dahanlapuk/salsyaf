@@ -32,6 +32,8 @@ export default function BeritaPage() {
             const res = await fetch(`${API_URL}/api/news`)
             if (res.ok) {
                 const json = await res.json()
+                console.log('DEBUG DATA:', json)
+                console.log('DEBUG DATA.TYPE:', typeof json?.data, Array.isArray(json?.data))
                 const newsArray = Array.isArray(json.data) ? json.data : (Array.isArray(json) ? json : [])
                 setNewsData(newsArray.filter((n: NewsItem) => n.published))
             }

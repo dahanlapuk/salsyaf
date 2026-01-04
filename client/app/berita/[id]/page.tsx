@@ -58,6 +58,8 @@ export default function BeritaDetailPage() {
             const res = await fetch(`${API_URL}/api/news`)
             if (res.ok) {
                 const json = await res.json()
+                console.log('DEBUG DATA:', json)
+                console.log('DEBUG DATA.TYPE:', typeof json?.data, Array.isArray(json?.data))
                 const newsArray = Array.isArray(json.data) ? json.data : (Array.isArray(json) ? json : [])
                 const related = newsArray
                     .filter((item: NewsItem) => item._id !== id && item.published)

@@ -8,9 +8,6 @@ import scheduleRoutes from './routes/schedule'
 import galleryRoutes from './routes/gallery'
 import authRoutes from './routes/auth'
 import uploadRoutes from './routes/upload'
-import devRoutes from './routes/dev'
-
-
 dotenv.config()
 
 const app: Application = express()
@@ -30,43 +27,6 @@ app.use('/api/schedule', scheduleRoutes)
 app.use('/api/gallery', galleryRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/upload', uploadRoutes)
-app.use('/api/dev', devRoutes)
-
-
-// Endpoint sementara
-import bcrypt from 'bcryptjs'
-
-// ⚠️ ENDPOINT SEMENTARA — HAPUS SETELAH DIPAKAI
-app.post('/api/dev/seed-admin', async (req, res) => {
-  try {
-    const Admin = mongoose.model('Admin')
-
-    const existing = await Admin.findOne({ username: 'admin' })
-    if (existing) {
-      return res.json({
-        ok: true,
-        message: 'Admin already exists'
-      })
-    }
-
-    const hashedPassword = await bcrypt.hash('admin123', 10)
-
-    await Admin.create({
-      username: 'admin',
-      password: hashedPassword,
-      role: 'superadmin'
-    })
-
-    return res.json({
-      ok: true,
-      username: 'admin',
-      password: 'admin123'
-    })
-  } catch (error) {
-    console.error('SEED ERROR:', error)
-    return res.status(500).json({ ok: false, error })
-  }
-})
 
 // Health check
 app.get('/api/health', (req: Request, res: Response) => {

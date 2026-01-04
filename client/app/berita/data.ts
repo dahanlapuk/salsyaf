@@ -82,66 +82,51 @@ Dirgahayu Santri Indonesia! Dari santri untuk negeri, menuju peradaban dunia.`,
     },
     {
         id: '3',
-        title: 'Rangkaian Acara Rajaban 2026: Haul Pendiri Pesantren hingga Sunatan Massal',
-        excerpt: 'PPTQ Proto akan menggelar rangkaian acara Rajaban pada 8-9 Januari 2026, dimeriahkan dengan Haul Mbah Syarif hingga sunatan massal.',
-        content: `Bismillahirrahmanirrahim. Pondok Pesantren Tahfidzul Qur'an Salafiyah Syafi'iyah Proto dengan penuh kegembiraan mengundang seluruh masyarakat untuk menghadiri rangkaian acara Rajaban yang akan diselenggarakan pada tanggal 8-9 Januari 2026.
+        title: 'Salsyaf Bersholawat: Majelis Sholawat Bersama Fata Qothrun Nada',
+        excerpt: 'Hadirilah Salsyaf Bersholawat pada Rabu, 7 Januari 2026. Dimeriahkan Grup Fata Qothrun Nada, Ustadz Khurrul Fikri Wulida, dan Ustadz Fauzi (Asyiqol Musthofa). Digelar dalam rangkaian Khotmil Qur\'an, Haul Akbar, Khitanan Massal, dan Wisuda TPQ.',
+        content: `Pondok Pesantren Tahfidzul Qur'an Salafiyah Syafi'iyah Proto mengundang seluruh masyarakat untuk hadir dalam acara **Salsyaf Bersholawat**, majelis sholawat dan dzikir bersama yang akan diselenggarakan pada:
 
-**Latar Belakang Acara**
+**Rabu, 7 Januari 2026 M / 7 Rajab 1447 H**
+Pukul 18.30 WIB – Selesai
+Halaman MISS Proto / Belakang Masjid Waqof
+Desa Proto, Kecamatan Kedungwuni, Kabupaten Pekalongan
 
-Bulan Rajab merupakan salah satu bulan yang dimuliakan dalam Islam. Di bulan ini, umat Muslim dianjurkan untuk memperbanyak ibadah dan mengenang jasa para ulama dan orang-orang shalih yang telah berjuang menyebarkan agama Islam.
+**Pengisi Acara**
 
-PPTQ Salafiyah Syafi'iyah Proto secara rutin menyelenggarakan acara Rajaban sebagai momentum untuk mengenang jasa-jasa para pendiri pesantren, khususnya Almaghfurlah Mbah KH. Syarif Da'un dan Almaghfurlahah Mbah Nyai Hj. Maslahah yang telah merintis pesantren ini sejak tahun 1945.
+- Grup Fata Qothrun Nada
+- Ustadz Khurrul Fikri Wulida
+- Ustadz Fauzi (Asyiqol Musthofa)
 
-**Susunan Acara**
+**Rangkaian Acara**
 
-**Hari Pertama - Kamis, 8 Januari 2026:**
+Acara ini diselenggarakan dalam rangkaian:
 
-*Siang - Sore:*
-- Pembukaan acara
-- Ziarah ke makam Almaghfurlah Mbah KH. Syarif Da'un
-- Pembacaan Tahlil dan Yasin
+1. **Khotmil Qur'an Bil Ghoib** — Khataman Al-Qur'an secara hafalan oleh para santri PPTQ Proto.
 
-*Malam:*
-- Pengajian Akbar
-- Pembacaan Maulid Nabi
-- Ceramah Agama oleh Habib/Kyai tamu undangan
+2. **Haul Akbar** — Mengenang dan mendoakan Almaghfurlah Mbah KH. Syarif Da'un dan Mbah Nyai Hj. Maslahah, pendiri Pondok Pesantren sejak tahun 1945.
 
-**Hari Kedua - Jumat, 9 Januari 2026:**
+3. **Khitanan Massal** — Program sosial khitanan gratis untuk masyarakat yang membutuhkan.
 
-*Pagi:*
-- Sunatan Massal Gratis
-- Sasaran: Anak-anak dari keluarga kurang mampu di sekitar pesantren
+4. **Wisuda TPQ Al-Ittihad** — Pelepasan santri TPQ yang telah menyelesaikan program pembelajaran Al-Qur'an.
 
-*Siang:*
-- Makan bersama
-- Penutupan acara
+**Live Streaming**
 
-**Haul Almaghfurlah Mbah KH. Syarif Da'un**
+Bagi yang tidak dapat hadir, acara akan disiarkan live melalui YouTube ponpessalsyafproto.
 
-Haul merupakan tradisi untuk mengenang dan mendoakan orang yang telah wafat, khususnya para ulama dan kyai yang telah berjasa dalam penyebaran Islam. Mbah KH. Syarif Da'un adalah pendiri Pondok Pesantren Salafiyah Syafi'iyah Proto yang mendirikan pesantren ini pada tahun 1945 bersama istri beliau, Mbah Nyai Hj. Maslahah.
+Media Partner: Mubarok Production, ID Media (Santri Pekalongan)
 
-Berkat perjuangan dan kegigihan beliau, pesantren ini terus berkembang hingga saat ini dan telah mencetak ribuan alumni yang tersebar di berbagai penjuru tanah air.
+**Kontak**
 
-**Sunatan Massal Gratis**
-
-Sebagai bentuk kepedulian sosial, PPTQ Proto juga menyelenggarakan sunatan massal gratis yang ditujukan untuk anak-anak dari keluarga kurang mampu di sekitar pesantren. Program ini merupakan wujud nyata dari semangat pesantren untuk memberikan manfaat bagi masyarakat sekitar.
-
-Bagi yang berminat mendaftarkan putranya untuk mengikuti sunatan massal, dapat menghubungi sekretariat pesantren untuk pendaftaran.
-
-**Undangan Terbuka**
-
-Kami mengundang seluruh masyarakat, alumni, dan simpatisan untuk hadir dan memeriahkan acara ini. Mari bersama-sama mengenang jasa para pendiri pesantren dan mempererat tali silaturahmi.
-
-**Informasi Lebih Lanjut:**
-- WhatsApp: +62 857-0012-8153 (Ridho Rizaldi)
 - Email: ponpesproto22@gmail.com
-- Alamat: Jl. Ponpes Al-quran Gang 2, Proto Karangasem, Kedungwuni, Pekalongan 51173
+- Instagram: @ponpes_salsysaf
+- TikTok: @ponpes_salsysaf
+- YouTube: ponpessalsyafproto
 
-Kami tunggu kehadiran Bapak/Ibu/Saudara sekalian. Jazakumullahu khairan katsiran.`,
+Kami tunggu kehadiran Bapak/Ibu sekalian.`,
         image: '/images/placeholder.jpg',
         author: 'Admin PPTQ',
-        date: '2026-01-02',
-        category: 'Pengumuman'
+        date: '2026-01-04',
+        category: 'Event'
     },
 ]
 

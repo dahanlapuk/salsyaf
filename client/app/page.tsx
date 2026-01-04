@@ -2,11 +2,10 @@
 
 import Hero from '@/components/Hero'
 import YouTubePopup from '@/components/YouTubePopup'
-import styles from './page.module.css'
 
 export default function Home() {
     return (
-        <div className={styles.home}>
+        <div className="min-h-screen">
             <YouTubePopup videoId="-CAL3YpejUM" autoClose={2} />
             <Hero />
 

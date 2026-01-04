@@ -108,28 +108,6 @@
     color: var(--color-text-light);
 }
 
-.shareButtons {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.shareBtn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: var(--radius-full);
-    background: var(--color-surface);
-    color: var(--color-text);
-    transition: all 0.2s ease;
-}
-
-.shareBtn:hover {
-    background: var(--color-primary);
-    color: white;
-}
-
 /* Related News */
 .relatedCard {
     display: flex;

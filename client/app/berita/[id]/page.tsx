@@ -44,6 +44,9 @@ export default function BeritaDetailPage() {
                 const json = await res.json()
                 // Backend returns { success, data } - extract data.data
                 const newsItem = json.data || json
+                console.log('DEBUG newsItem:', newsItem)
+                console.log('DEBUG publishDate:', newsItem?.publishDate)
+                console.log('DEBUG createdAt:', newsItem?.createdAt)
                 if (newsItem && newsItem._id) {
                     setNews(newsItem)
                 } else {

@@ -15,7 +15,7 @@ router.get('/', validatePagination, async (req: Request, res: Response) => {
 
     const filter = admin ? {} : { published: true }
     const news = await News.find(filter)
-      .sort({ createdAt: -1 })
+      .sort({ publishDate: -1 })  // Sort by publishDate (supports retroactive dates)
       .skip(skip)
       .limit(limit)
 

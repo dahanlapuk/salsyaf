@@ -8,7 +8,8 @@ export interface INews extends Document {
   author: string
   category: string
   published: boolean
-  createdAt: Date
+  publishDate: Date  // Tanggal publikasi (bisa custom/retroaktif)
+  createdAt: Date    // Tanggal data dibuat di sistem
   updatedAt: Date
 }
 
@@ -43,6 +44,10 @@ const NewsSchema: Schema = new Schema({
   published: {
     type: Boolean,
     default: true
+  },
+  publishDate: {
+    type: Date,
+    default: Date.now  // Default ke tanggal sekarang, tapi bisa di-override
   }
 }, {
   timestamps: true

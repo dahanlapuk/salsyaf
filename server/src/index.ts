@@ -8,6 +8,8 @@ import scheduleRoutes from './routes/schedule'
 import galleryRoutes from './routes/gallery'
 import authRoutes from './routes/auth'
 import uploadRoutes from './routes/upload'
+import devRoutes from './routes/dev'
+
 
 dotenv.config()
 
@@ -28,6 +30,8 @@ app.use('/api/schedule', scheduleRoutes)
 app.use('/api/gallery', galleryRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/upload', uploadRoutes)
+app.use('/api/dev', devRoutes)
+
 
 // Endpoint sementara
 import bcrypt from 'bcryptjs'

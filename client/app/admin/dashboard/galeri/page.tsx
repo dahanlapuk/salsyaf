@@ -25,10 +25,9 @@ export default function GaleriPage() {
     const fetchGallery = async () => {
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/gallery?limit=100&admin=true`)
-            const data = await res.json()
-            if (data.success) {
-                setGallery(data.data)
-            }
+            const json = await res.json()
+            const galleryArray = Array.isArray(json.data) ? json.data : []
+            setGallery(galleryArray)
         } catch (error) {
             console.error('Error fetching gallery:', error)
         } finally {

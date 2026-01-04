@@ -27,8 +27,9 @@ export default function GaleriPage() {
         try {
             const res = await fetch(`${API_URL}/api/gallery`)
             if (res.ok) {
-                const data = await res.json()
-                setGallery(data)
+                const json = await res.json()
+                const galleryArray = Array.isArray(json.data) ? json.data : (Array.isArray(json) ? json : [])
+                setGallery(galleryArray)
             }
         } catch (error) {
             console.error('Error fetching gallery:', error)

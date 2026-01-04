@@ -29,13 +29,17 @@ export default function DashboardPage() {
             ])
 
             const newsData = newsRes ? await newsRes.json() : { data: [], pagination: { total: 0 } }
-            const galleryData = galleryRes ? await galleryRes.json() : { pagination: { total: 0 } }
+            const galleryData = galleryRes ? await galleryRes.json() : { data: [], pagination: { total: 0 } }
             const scheduleData = scheduleRes ? await scheduleRes.json() : { data: [] }
 
+            const newsArray = Array.isArray(newsData.data) ? newsData.data : []
+            const galleryArray = Array.isArray(galleryData.data) ? galleryData.data : []
+            const scheduleArray = Array.isArray(scheduleData.data) ? scheduleData.data : []
+
             setStats({
-                news: newsData.pagination?.total || newsData.data?.length || 0,
-                gallery: galleryData.pagination?.total || 0,
-                schedule: scheduleData.data?.length || 0
+                news: newsData.pagination?.total || newsArray.length,
+                gallery: galleryData.pagination?.total || galleryArray.length,
+                schedule: scheduleArray.length
             })
         } catch (error) {
             console.error('Error fetching stats:', error)

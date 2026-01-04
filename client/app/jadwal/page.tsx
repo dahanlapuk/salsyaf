@@ -27,8 +27,9 @@ export default function JadwalPage() {
         try {
             const res = await fetch(`${API_URL}/api/schedule`)
             if (res.ok) {
-                const data = await res.json()
-                setSchedules(data)
+                const json = await res.json()
+                const schedulesArray = Array.isArray(json.data) ? json.data : (Array.isArray(json) ? json : [])
+                setSchedules(schedulesArray)
             }
         } catch (error) {
             console.error('Error fetching schedules:', error)

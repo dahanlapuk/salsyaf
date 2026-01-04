@@ -26,10 +26,9 @@ export default function JadwalPage() {
     const fetchSchedules = async () => {
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/schedule`)
-            const data = await res.json()
-            if (data.success) {
-                setSchedules(data.data)
-            }
+            const json = await res.json()
+            const schedulesArray = Array.isArray(json.data) ? json.data : []
+            setSchedules(schedulesArray)
         } catch (error) {
             console.error('Error fetching schedules:', error)
         } finally {

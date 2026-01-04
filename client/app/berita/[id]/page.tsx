@@ -57,8 +57,9 @@ export default function BeritaDetailPage() {
         try {
             const res = await fetch(`${API_URL}/api/news`)
             if (res.ok) {
-                const data = await res.json()
-                const related = data
+                const json = await res.json()
+                const newsArray = Array.isArray(json.data) ? json.data : (Array.isArray(json) ? json : [])
+                const related = newsArray
                     .filter((item: NewsItem) => item._id !== id && item.published)
                     .slice(0, 2)
                 setRelatedNews(related)

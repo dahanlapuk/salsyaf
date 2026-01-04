@@ -31,8 +31,9 @@ export default function BeritaPage() {
         try {
             const res = await fetch(`${API_URL}/api/news`)
             if (res.ok) {
-                const data = await res.json()
-                setNewsData(data.filter((n: NewsItem) => n.published))
+                const json = await res.json()
+                const newsArray = Array.isArray(json.data) ? json.data : (Array.isArray(json) ? json : [])
+                setNewsData(newsArray.filter((n: NewsItem) => n.published))
             }
         } catch (error) {
             console.error('Error fetching news:', error)

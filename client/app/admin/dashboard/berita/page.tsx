@@ -27,10 +27,9 @@ export default function BeritaPage() {
     const fetchNews = async () => {
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/news?limit=100`)
-            const data = await res.json()
-            if (data.success) {
-                setNews(data.data)
-            }
+            const json = await res.json()
+            const newsArray = Array.isArray(json.data) ? json.data : []
+            setNews(newsArray)
         } catch (error) {
             console.error('Error fetching news:', error)
         } finally {

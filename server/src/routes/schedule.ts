@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express'
 import Schedule from '../models/Schedule'
+import { authMiddleware, adminOnly, AuthRequest } from '../middleware/auth'
 
 const router = Router()
 
@@ -34,7 +35,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 })
 
 // Create schedule (admin only)
-router.post('/', async (req: Request, res: Response) => {
+router.post('/', authMiddleware, adminOnly, async (req: AuthRequest, res: Response) => {
   try {
     const schedule = new Schedule(req.body)
     await schedule.save()
@@ -45,7 +46,7 @@ router.post('/', async (req: Request, res: Response) => {
 })
 
 // Update schedule (admin only)
-router.put('/:id', async (req: Request, res: Response) => {
+router.put('/:id', authMiddleware, adminOnly, async (req: AuthRequest, res: Response) => {
   try {
     const schedule = await Schedule.findByIdAndUpdate(
       req.params.id,
@@ -62,7 +63,7 @@ router.put('/:id', async (req: Request, res: Response) => {
 })
 
 // Delete schedule (admin only)
-router.delete('/:id', async (req: Request, res: Response) => {
+router.delete('/:id', authMiddleware, adminOnly, async (req: AuthRequest, res: Response) => {
   try {
     const schedule = await Schedule.findByIdAndDelete(req.params.id)
     if (!schedule) {

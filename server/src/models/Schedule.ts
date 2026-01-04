@@ -4,9 +4,8 @@ export interface ISchedule extends Document {
   title: string
   description?: string
   time: string
-  type: 'daily' | 'weekly' | 'monthly'
+  type: 'harian' | 'mingguan' | 'bulanan' | 'tahunan'
   day?: string
-  recurring: boolean
   createdAt: Date
   updatedAt: Date
 }
@@ -27,15 +26,11 @@ const ScheduleSchema: Schema = new Schema({
   type: {
     type: String,
     required: true,
-    enum: ['daily', 'weekly', 'monthly'],
-    default: 'daily'
+    enum: ['harian', 'mingguan', 'bulanan', 'tahunan'],
+    default: 'harian'
   },
   day: {
     type: String
-  },
-  recurring: {
-    type: Boolean,
-    default: true
   }
 }, {
   timestamps: true

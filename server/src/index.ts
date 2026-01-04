@@ -2,10 +2,12 @@ import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
+import path from 'path'
 import newsRoutes from './routes/news'
 import scheduleRoutes from './routes/schedule'
 import galleryRoutes from './routes/gallery'
 import authRoutes from './routes/auth'
+import uploadRoutes from './routes/upload'
 
 dotenv.config()
 
@@ -18,13 +20,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Static files for uploads
-app.use('/uploads', express.static('uploads'))
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')))
 
 // Routes
 app.use('/api/news', newsRoutes)
 app.use('/api/schedule', scheduleRoutes)
 app.use('/api/gallery', galleryRoutes)
 app.use('/api/auth', authRoutes)
+app.use('/api/upload', uploadRoutes)
 
 // Health check
 app.get('/api/health', (req: Request, res: Response) => {

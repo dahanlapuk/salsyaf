@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express'
 import News from '../models/News'
+import { authMiddleware, adminOnly, AuthRequest } from '../middleware/auth'
 
 const router = Router()
 
@@ -45,8 +46,8 @@ router.get('/:id', async (req: Request, res: Response) => {
   }
 })
 
-// Create news (admin only - add auth middleware later)
-router.post('/', async (req: Request, res: Response) => {
+// Create news (admin only)
+router.post('/', authMiddleware, adminOnly, async (req: AuthRequest, res: Response) => {
   try {
     const news = new News(req.body)
     await news.save()
@@ -57,7 +58,7 @@ router.post('/', async (req: Request, res: Response) => {
 })
 
 // Update news (admin only)
-router.put('/:id', async (req: Request, res: Response) => {
+router.put('/:id', authMiddleware, adminOnly, async (req: AuthRequest, res: Response) => {
   try {
     const news = await News.findByIdAndUpdate(
       req.params.id,
@@ -74,7 +75,7 @@ router.put('/:id', async (req: Request, res: Response) => {
 })
 
 // Delete news (admin only)
-router.delete('/:id', async (req: Request, res: Response) => {
+router.delete('/:id', authMiddleware, adminOnly, async (req: AuthRequest, res: Response) => {
   try {
     const news = await News.findByIdAndDelete(req.params.id)
     if (!news) {

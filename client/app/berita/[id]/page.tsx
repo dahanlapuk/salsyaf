@@ -1,45 +1,99 @@
-import { Metadata } from 'next'
+'use client'
+
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { notFound } from 'next/navigation'
-import { newsData, getNewsById, getAllNewsIds } from '../data'
+import { useParams } from 'next/navigation'
 import ShareButtons from '@/components/ShareButtons'
 import styles from './beritaDetail.module.css'
 
-interface Props {
-    params: Promise<{ id: string }>
+interface NewsItem {
+    _id: string
+    title: string
+    excerpt: string
+    content: string
+    image: string
+    category: string
+    author: string
+    createdAt: string
+    published: boolean
 }
 
-export async function generateStaticParams() {
-    return getAllNewsIds().map((id) => ({ id }))
-}
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const { id } = await params
-    const news = getNewsById(id)
-    
-    if (!news) {
-        return { title: 'Berita Tidak Ditemukan' }
+export default function BeritaDetailPage() {
+    const params = useParams()
+    const id = params.id as string
+    const [news, setNews] = useState<NewsItem | null>(null)
+    const [relatedNews, setRelatedNews] = useState<NewsItem[]>([])
+    const [loading, setLoading] = useState(true)
+    const [notFound, setNotFound] = useState(false)
+
+    useEffect(() => {
+        if (id) {
+            fetchNewsDetail()
+            fetchRelatedNews()
+        }
+    }, [id])
+
+    const fetchNewsDetail = async () => {
+        try {
+            const res = await fetch(`${API_URL}/api/news/${id}`)
+            if (res.ok) {
+                const data = await res.json()
+                setNews(data)
+            } else {
+                setNotFound(true)
+            }
+        } catch (error) {
+            console.error('Error fetching news:', error)
+            setNotFound(true)
+        } finally {
+            setLoading(false)
+        }
     }
 
-    return {
-        title: `${news.title} - PPTQ Salsyaf Proto`,
-        description: news.excerpt,
+    const fetchRelatedNews = async () => {
+        try {
+            const res = await fetch(`${API_URL}/api/news`)
+            if (res.ok) {
+                const data = await res.json()
+                const related = data
+                    .filter((item: NewsItem) => item._id !== id && item.published)
+                    .slice(0, 2)
+                setRelatedNews(related)
+            }
+        } catch (error) {
+            console.error('Error fetching related news:', error)
+        }
     }
-}
 
-export default async function BeritaDetailPage({ params }: Props) {
-    const { id } = await params
-    const news = getNewsById(id)
-
-    if (!news) {
-        notFound()
+    const getImageUrl = (image: string) => {
+        if (image.startsWith('http')) return image
+        if (image.startsWith('/images')) return image
+        return `${API_URL}${image}`
     }
 
-    // Get related news (exclude current)
-    const relatedNews = newsData
-        .filter(item => item.id !== id)
-        .slice(0, 2)
+    if (loading) {
+        return (
+            <div className={styles.loading}>
+                <div className="spinner"></div>
+                <p>Memuat berita...</p>
+            </div>
+        )
+    }
+
+    if (notFound || !news) {
+        return (
+            <div className={styles.notFound}>
+                <h1>Berita Tidak Ditemukan</h1>
+                <p>Berita yang Anda cari tidak tersedia.</p>
+                <Link href="/berita" className="btn btn-primary">
+                    Kembali ke Berita
+                </Link>
+            </div>
+        )
+    }
 
     return (
         <div className={styles.beritaDetailPage}>
@@ -52,7 +106,7 @@ export default async function BeritaDetailPage({ params }: Props) {
                     <span className={styles.category}>{news.category}</span>
                     <h1>{news.title}</h1>
                     <div className={styles.meta}>
-                        <span>{new Date(news.date).toLocaleDateString('id-ID', {
+                        <span>{new Date(news.createdAt).toLocaleDateString('id-ID', {
                             weekday: 'long',
                             year: 'numeric',
                             month: 'long',
@@ -69,7 +123,7 @@ export default async function BeritaDetailPage({ params }: Props) {
                 <div className="container">
                     <div className={styles.featuredImage}>
                         <Image
-                            src={news.image}
+                            src={getImageUrl(news.image)}
                             alt={news.title}
                             fill
                             priority
@@ -118,10 +172,10 @@ export default async function BeritaDetailPage({ params }: Props) {
                         <h2 className="text-center mb-lg">Berita Lainnya</h2>
                         <div className="grid grid-2">
                             {relatedNews.map((item) => (
-                                <Link key={item.id} href={`/berita/${item.id}`} className={styles.relatedCard}>
+                                <Link key={item._id} href={`/berita/${item._id}`} className={styles.relatedCard}>
                                     <div className={styles.relatedImage}>
                                         <Image
-                                            src={item.image}
+                                            src={getImageUrl(item.image)}
                                             alt={item.title}
                                             fill
                                             className={styles.relatedImg}
@@ -131,7 +185,7 @@ export default async function BeritaDetailPage({ params }: Props) {
                                         <span className={styles.relatedCategory}>{item.category}</span>
                                         <h3>{item.title}</h3>
                                         <span className={styles.relatedDate}>
-                                            {new Date(item.date).toLocaleDateString('id-ID', {
+                                            {new Date(item.createdAt).toLocaleDateString('id-ID', {
                                                 year: 'numeric',
                                                 month: 'long',
                                                 day: 'numeric'

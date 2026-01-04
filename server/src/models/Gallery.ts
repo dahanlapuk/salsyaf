@@ -3,7 +3,7 @@ import mongoose, { Schema, Document } from 'mongoose'
 export interface IGallery extends Document {
   title: string
   description?: string
-  imageUrl: string
+  image: string
   category: string
   createdAt: Date
   updatedAt: Date
@@ -18,15 +18,15 @@ const GallerySchema: Schema = new Schema({
   description: {
     type: String
   },
-  imageUrl: {
+  image: {
     type: String,
     required: true
   },
   category: {
     type: String,
     required: true,
-    enum: ['kegiatan', 'fasilitas', 'acara'],
-    default: 'kegiatan'
+    enum: ['Kegiatan', 'Prestasi', 'Fasilitas', 'Santri', 'Lainnya'],
+    default: 'Kegiatan'
   }
 }, {
   timestamps: true

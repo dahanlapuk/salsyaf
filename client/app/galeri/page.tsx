@@ -2,13 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import styles from './galeri.module.css'
+import Image from 'next/image'
 
 interface GalleryItem {
-    id: string
+    _id: string
     title: string
+    description?: string
     category: string
     image: string
 }
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
 export default function GaleriPage() {
     const [gallery, setGallery] = useState<GalleryItem[]>([])
@@ -16,28 +20,29 @@ export default function GaleriPage() {
     const [selectedCategory, setSelectedCategory] = useState('all')
 
     useEffect(() => {
-        // Simulate fetching gallery
-        setTimeout(() => {
-            setGallery([
-                { id: '1', title: 'Kegiatan Tahfidz', category: 'kegiatan', image: '/placeholder.jpg' },
-                { id: '2', title: 'Gedung Utama', category: 'fasilitas', image: '/placeholder.jpg' },
-                { id: '3', title: 'Wisuda Tahfidz', category: 'acara', image: '/placeholder.jpg' },
-                { id: '4', title: 'Asrama Santri', category: 'fasilitas', image: '/placeholder.jpg' },
-                { id: '5', title: 'Kajian Kitab', category: 'kegiatan', image: '/placeholder.jpg' },
-                { id: '6', title: 'Peringatan Maulid', category: 'acara', image: '/placeholder.jpg' },
-                { id: '7', title: 'Perpustakaan', category: 'fasilitas', image: '/placeholder.jpg' },
-                { id: '8', title: 'Olahraga Bersama', category: 'kegiatan', image: '/placeholder.jpg' },
-                { id: '9', title: 'Masjid Pondok', category: 'fasilitas', image: '/placeholder.jpg' },
-            ])
-            setLoading(false)
-        }, 500)
+        fetchGallery()
     }, [])
+
+    const fetchGallery = async () => {
+        try {
+            const res = await fetch(`${API_URL}/api/gallery`)
+            if (res.ok) {
+                const data = await res.json()
+                setGallery(data)
+            }
+        } catch (error) {
+            console.error('Error fetching gallery:', error)
+        } finally {
+            setLoading(false)
+        }
+    }
 
     const categories = [
         { value: 'all', label: 'Semua' },
-        { value: 'kegiatan', label: 'Kegiatan' },
-        { value: 'fasilitas', label: 'Fasilitas' },
-        { value: 'acara', label: 'Acara' },
+        { value: 'Kegiatan', label: 'Kegiatan' },
+        { value: 'Fasilitas', label: 'Fasilitas' },
+        { value: 'Prestasi', label: 'Prestasi' },
+        { value: 'Santri', label: 'Santri' },
     ]
 
     const filteredGallery = selectedCategory === 'all'
@@ -82,9 +87,18 @@ export default function GaleriPage() {
                     {/* Gallery Grid */}
                     <div className={styles.galleryGrid}>
                         {filteredGallery.map((item) => (
-                            <div key={item.id} className={styles.galleryItem}>
+                            <div key={item._id} className={styles.galleryItem}>
                                 <div className={styles.imagePlaceholder}>
-                                    <div className={styles.imageIcon}>🖼️</div>
+                                    {item.image && item.image !== '/images/placeholder.jpg' ? (
+                                        <Image
+                                            src={item.image.startsWith('http') ? item.image : `${API_URL}${item.image}`}
+                                            alt={item.title}
+                                            fill
+                                            style={{ objectFit: 'cover' }}
+                                        />
+                                    ) : (
+                                        <div className={styles.imageIcon}>🖼️</div>
+                                    )}
                                 </div>
                                 <div className={styles.galleryOverlay}>
                                     <h4>{item.title}</h4>

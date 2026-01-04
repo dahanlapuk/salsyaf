@@ -13,27 +13,49 @@ dotenv.config()
 const app: Application = express()
 const PORT = process.env.PORT || 5000
 
-// CORS Configuration
-const allowedOrigins = [
+// CORS Configuration - Safe function-based origin
+const allowedOrigins: string[] = [
     'http://localhost:3000',
-    'http://localhost:3001', 
-    process.env.FRONTEND_URL,
-    process.env.CORS_ORIGIN
-].filter(Boolean) as string[]
+    'http://localhost:3001',
+    // Production URLs
+    'https://salsyaf.vercel.app',
+    'https://pptq-salsyaf.vercel.app',
+]
 
+// Add env-based origins if defined
+if (process.env.FRONTEND_URL) allowedOrigins.push(process.env.FRONTEND_URL)
+if (process.env.CORS_ORIGIN) allowedOrigins.push(process.env.CORS_ORIGIN)
+
+// CORS middleware
 app.use(cors({
-    origin: (origin, callback) => {
-        // Allow requests with no origin (mobile apps, curl, etc)
-        if (!origin) return callback(null, true)
-        
-        if (allowedOrigins.includes(origin) || process.env.NODE_ENV !== 'production') {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
+    origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+        // Allow requests with no origin (curl, mobile apps, server-to-server)
+        if (!origin) {
+            return callback(null, true)
         }
+        
+        // Allow if origin is in whitelist
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true)
+        }
+        
+        // Allow all in development
+        if (process.env.NODE_ENV !== 'production') {
+            return callback(null, true)
+        }
+        
+        // Block with false (not error) - this returns proper CORS headers
+        // Browser will show CORS error, server won't crash
+        return callback(null, false)
     },
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }))
+
+// Handle preflight requests explicitly
+app.options('*', cors())
+
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 

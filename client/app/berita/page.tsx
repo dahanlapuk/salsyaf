@@ -13,6 +13,7 @@ interface NewsItem {
     image: string
     category: string
     author: string
+    publishDate: string  // Tanggal publikasi (custom/retroaktif)
     createdAt: string
     published: boolean
 }
@@ -79,7 +80,7 @@ export default function BeritaPage() {
                                 </div>
                                 <div className={styles.newsContent}>
                                     <div className={styles.newsMeta}>
-                                        <span>{new Date(item.createdAt).toLocaleDateString('id-ID', {
+                                        <span>{new Date(item.publishDate || item.createdAt).toLocaleDateString('id-ID', {
                                             year: 'numeric',
                                             month: 'long',
                                             day: 'numeric'

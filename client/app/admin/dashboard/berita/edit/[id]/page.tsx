@@ -23,7 +23,8 @@ export default function EditBeritaPage() {
         content: '',
         category: 'Kegiatan',
         image: '',
-        published: true
+        published: true,
+        publishDate: ''
     })
 
     useEffect(() => {
@@ -42,7 +43,10 @@ export default function EditBeritaPage() {
                     content: data.data.content,
                     category: data.data.category,
                     image: data.data.image || '',
-                    published: data.data.published
+                    published: data.data.published,
+                    publishDate: data.data.publishDate 
+                        ? new Date(data.data.publishDate).toISOString().split('T')[0] 
+                        : new Date(data.data.createdAt).toISOString().split('T')[0]
                 })
                 if (data.data.image) {
                     setImagePreview(data.data.image)
@@ -244,6 +248,21 @@ export default function EditBeritaPage() {
                         placeholder="https://example.com/image.jpg"
                         style={{ marginTop: '0.5rem' }}
                     />
+                </div>
+
+                <div className={styles.formGroup}>
+                    <label htmlFor="publishDate">Tanggal Publikasi *</label>
+                    <input
+                        type="date"
+                        id="publishDate"
+                        name="publishDate"
+                        value={formData.publishDate}
+                        onChange={handleChange}
+                        required
+                    />
+                    <small style={{ color: '#666', marginTop: '0.25rem', display: 'block' }}>
+                        Bisa diisi tanggal lampau untuk berita retroaktif
+                    </small>
                 </div>
 
                 <div className={styles.formGroup}>

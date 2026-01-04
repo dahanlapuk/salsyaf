@@ -24,7 +24,8 @@ export interface NewsItem {
   category: 'Prestasi' | 'Kegiatan' | 'Pengumuman' | 'Lainnya'
   author: string
   published: boolean
-  createdAt: string
+  publishDate: string  // Tanggal publikasi (bisa custom/retroaktif)
+  createdAt: string    // Tanggal data dibuat di sistem
   updatedAt: string
 }
 

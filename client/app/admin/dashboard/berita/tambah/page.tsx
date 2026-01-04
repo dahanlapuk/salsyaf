@@ -19,7 +19,8 @@ export default function TambahBeritaPage() {
         content: '',
         category: 'Kegiatan',
         image: '',
-        published: true
+        published: true,
+        publishDate: new Date().toISOString().split('T')[0]  // Default hari ini
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -208,6 +209,21 @@ export default function TambahBeritaPage() {
                         placeholder="https://example.com/image.jpg"
                         style={{ marginTop: '0.5rem' }}
                     />
+                </div>
+
+                <div className={styles.formGroup}>
+                    <label htmlFor="publishDate">Tanggal Publikasi *</label>
+                    <input
+                        type="date"
+                        id="publishDate"
+                        name="publishDate"
+                        value={formData.publishDate}
+                        onChange={handleChange}
+                        required
+                    />
+                    <small style={{ color: '#666', marginTop: '0.25rem', display: 'block' }}>
+                        Bisa diisi tanggal lampau untuk berita retroaktif
+                    </small>
                 </div>
 
                 <div className={styles.formGroup}>

@@ -15,6 +15,7 @@ interface NewsItem {
     image: string
     category: string
     author: string
+    publishDate: string  // Tanggal publikasi (custom/retroaktif)
     createdAt: string
     published: boolean
 }
@@ -114,7 +115,7 @@ export default function BeritaDetailPage() {
                     <span className={styles.category}>{news.category}</span>
                     <h1>{news.title}</h1>
                     <div className={styles.meta}>
-                        <span>{new Date(news.createdAt).toLocaleDateString('id-ID', {
+                        <span>{new Date(news.publishDate || news.createdAt).toLocaleDateString('id-ID', {
                             weekday: 'long',
                             year: 'numeric',
                             month: 'long',

@@ -29,6 +29,41 @@ app.use('/api/gallery', galleryRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/upload', uploadRoutes)
 
+// Endpoint sementara
+import bcrypt from 'bcryptjs'
+
+// ⚠️ ENDPOINT SEMENTARA — HAPUS SETELAH DIPAKAI
+app.post('/api/dev/seed-admin', async (req, res) => {
+  try {
+    const Admin = mongoose.model('Admin')
+
+    const existing = await Admin.findOne({ username: 'admin' })
+    if (existing) {
+      return res.json({
+        ok: true,
+        message: 'Admin already exists'
+      })
+    }
+
+    const hashedPassword = await bcrypt.hash('admin123', 10)
+
+    await Admin.create({
+      username: 'admin',
+      password: hashedPassword,
+      role: 'superadmin'
+    })
+
+    return res.json({
+      ok: true,
+      username: 'admin',
+      password: 'admin123'
+    })
+  } catch (error) {
+    console.error('SEED ERROR:', error)
+    return res.status(500).json({ ok: false, error })
+  }
+})
+
 // Health check
 app.get('/api/health', (req: Request, res: Response) => {
   res.json({ status: 'OK', message: 'Server is running' })

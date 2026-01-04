@@ -194,7 +194,7 @@ export default function BeritaDetailPage() {
                                         <span className={styles.relatedCategory}>{item.category}</span>
                                         <h3>{item.title}</h3>
                                         <span className={styles.relatedDate}>
-                                            {new Date(item.createdAt).toLocaleDateString('id-ID', {
+                                            {new Date(item.publishDate || item.createdAt).toLocaleDateString('id-ID', {
                                                 year: 'numeric',
                                                 month: 'long',
                                                 day: 'numeric'
